@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Krushil Naik | Project 1</title>
+
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        width: 100vw;
+        height: 100vh;
+        display: grid;
+        place-content: center;
+        text-align: center;
+        font-family: sans-serif;
+      }
+
+      h2 {
+        font-weight: normal;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrapper">
+      <h1>This is my first WebGL project</h1>
+      <h2>My name is Krushil Naik</h2>
+      <canvas id="my_canvas" width="640" height="480"></canvas>
+    </div>
+
+    <script>
+      function main() {
+        let canvas = document.querySelector("canvas");
+
+        // Try initializing WebQl context
+        let gl = canvas.getContext("webgl");
+
+        // Only continue if WebGL is supported by the environment
+        if (!gl) {
+          alert("Unable to initialize WebGL. Your browser or machine may not ");
+        }
+
+        // Set clear color to red
+        gl.clearColor(1.0, 0.0, 0.0, 1.0);
+
+        // Set clear buffer
+        gl.clear(gl.COLOR_BUFFER_BIT);
+      }
+
+      main();
+    </script>
+  </body>
+</html>
