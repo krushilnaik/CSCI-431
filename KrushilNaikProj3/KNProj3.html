@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <title>Rotating Triangle</title>
+
+    <script id="vertex-shader" type="x-shader/x-vertex">
+      #version 300 es
+
+      in vec4 aPosition;
+      uniform float uTheta;
+
+      void
+      main()
+      {
+          float s = sin(uTheta);
+          float c = cos(uTheta);
+
+          gl_Position.x = -s*aPosition.y + c*aPosition.x;
+          gl_Position.y =  s*aPosition.x + c*aPosition.y;
+          gl_Position.z = 0.0;
+          gl_Position.w = 1.0;
+      }
+    </script>
+
+    <script id="fragment-shader" type="x-shader/x-fragment">
+      #version 300 es
+      precision mediump float;
+      uniform vec4 fcolor;
+      out vec4 fColor;
+
+
+      void
+      main()
+      {
+          fColor = fcolor;
+      }
+    </script>
+
+    <script type="text/javascript" src="./common/initShaders.js"></script>
+    <script type="text/javascript" src="./common/MV.js"></script>
+    <script type="text/javascript" src="KNRotatingTriangle.js"></script>
+  </head>
+
+  <body>
+    <div>
+      speed 0% <input id="slider" type="range" min="0" max="100" step="10" value="50" />
+      100%
+    </div>
+
+    <button id="Direction">Change Rotation Direction</button>
+
+    <select id="Controls" size="6">
+      <option value="0">Toggle Rotation Direction</option>
+      <option value="1">Spin Faster</option>
+      <option value="2">Spin Slower</option>
+      <option value="3">Red</option>
+      <option value="4">Green</option>
+      <option value="5">Blue</option>
+      <option value="6">Black</option>
+    </select>
+
+    <canvas id="gl-canvas" width="512" height="512">
+      Oops ... your browser doesn't support the HTML5 canvas element
+    </canvas>
+  </body>
+</html>
